@@ -5,6 +5,7 @@
 :root {
     --primaryFont: "Lexend", sans-serif;
     --secondaryFont: "DM Sans", sans-serif;
+    --primaryColor: #75beff;
     --primaryTextColor: #000;
 }
 
@@ -39,7 +40,7 @@ nav > .name {
     color: var(--primaryTextColor)
 }
 
-ul {
+ul.desktopUl {
     display: flex;
     flex-direction: row;
     width: 30%;
@@ -50,9 +51,127 @@ ul {
     list-style: none;
 }
 
-ul > li, ul > a {
+ul.desktopUl > li, ul > a {
     cursor: pointer;
     font-family: var(--secondaryFont);
     text-decoration: none;
     color: var(--primaryTextColor);
+}
+
+div.mobileUl {
+    display: none;
+}
+
+div.navOpened {
+    animation: openMobileContainer 1s;
+    animation-fill-mode: forwards;
+}
+
+.mobileMenu {
+    display: none;
+}
+
+div.navClosed {
+    animation: closeMobileContainer 1s;
+    animation-fill-mode: forwards;
+}
+
+.mainContainer {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--primaryColor);
+}
+
+.buffer {
+    height: 2rem;
+    width: 100%;
+    background-color: transparent;
+}
+
+.meBox {
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    background-color: transparent;
+    height: auto;
+}
+
+.meBox > * {
+    width: 50%;
+    border-radius: 100%;
+}
+
+.mePic {
+    width: 8rem;
+    height: 8rem;
+    align-self: center;
+}
+
+.meSummary {
+    height: auto;
+    font-family: var(--primaryFont);
+}
+
+@keyframes closeMobileContainer {
+    from {
+        left: 0%;
+    }
+
+    to {
+        left: 100%;
+    }
+    
+}
+
+@keyframes openMobileContainer {
+    from {
+        left: 100%;
+    }
+    to {
+        left: 0%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    ul.desktopUl {
+        display: none;
+    }
+
+    div.mobileUl {
+        display: flex;
+        position: absolute;
+        background-color: rgba(31,31,31,0.5);
+        z-index: 9999;
+        width: 100vw;
+        height: 100vh;
+        top: 0%;
+        left: 100%;
+        margin: 0;
+        top: 4rem;
+        flex-direction: row-reverse;
+    }
+
+    div.mobileUl > .container {
+        display: flex;
+        background-color: white;
+        width: 70%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .mobileMenu {
+        display: flex;
+    }
+
+    nav.main {
+        justify-content: space-around;
+    }
+
+    .meBox {
+        width: 100%;
+    }
 }
